@@ -1,0 +1,3 @@
+<!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet"> -->
+<link href="css/fonts-googleapis-com.css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
