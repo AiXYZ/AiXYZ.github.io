@@ -4,20 +4,16 @@
         <title>Ali</title>
         <link href="css/lightgallery.css" rel="stylesheet">
         <style type="text/css">
-            body{
-                background-color: #152836
-            }
             .demo-gallery > ul {
               margin-bottom: 0;
             }
             .demo-gallery > ul > li {
                 float: left;
-                margin-bottom: 15px;
-                margin-right: 20px;
+                margin-bottom: 5px;
+                margin-right: 5px;
                 width: 200px;
             }
             .demo-gallery > ul > li a {
-              border: 3px solid #FFF;
               border-radius: 3px;
               display: block;
               overflow: hidden;
@@ -150,26 +146,7 @@
                 </li>
             </ul>
         </div>
-        <!-- test start -->
-        <script type="text/javascript">
-        var pdfFilesDirectory = '/myPhoto/';
 
-     // get auto-generated page 
-     $.ajax({url: pdfFilesDirectory}).then(function(html) {
-         // create temporary DOM element
-         var document = $(html);
-
-         // find all links ending with .pdf 
-         document.find('a[href$=.jpj]').each(function() {
-             var pdfName = $(this).text();
-             var pdfUrl = $(this).attr('href');
-
-             // do what you want here 
-         })
-     });      
-        console.log("Ali");
-        </script>  
-        <!-- test end -->
         <script type="text/javascript">
         $(document).ready(function(){
             $('#lightgallery').lightGallery();
