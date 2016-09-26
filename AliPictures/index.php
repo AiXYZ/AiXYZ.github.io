@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <title>Ali</title>
+		<link rel="shortcut icon" href="img/favicon.ico">		
         <link href="css/lightgallery.css" rel="stylesheet">
         <style type="text/css">
             .demo-gallery > ul {
