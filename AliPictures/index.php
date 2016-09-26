@@ -124,26 +124,31 @@
 
         <div class="demo-gallery">
             <ul id="lightgallery" class="list-unstyled row">
-                <li class="col-xs-6 col-sm-4 col-md-3" data-src="myPhoto/1.jpg" >
-                    <a href="">
-                        <img class="img-responsive" src="myPhoto/1.jpg">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-src="myPhoto/2.jpg">
-                    <a href="">
-                        <img class="img-responsive" src="myPhoto/2.jpg">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-src="myPhoto/3.jpg">
-                    <a href="">
-                        <img class="img-responsive" src="myPhoto/3.jpg">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-src="myPhoto/4.jpg">
-                    <a href="">
-                        <img class="img-responsive" src="myPhoto/4.jpg">
-                    </a>
-                </li>
+	            <?php 
+	            $files = glob("myPictures/*.*");
+	            
+	            for ($i=1; $i<count($files); $i++){
+	            
+	            	$image = $files[$i];
+	            	$supported_file = array(
+	            			'gif',
+	            			'jpg',
+	            			'jpeg',
+	            			'png'
+	            	);
+	            
+	            	$ext = strtolower(pathinfo($image, PATHINFO_EXTENSION));
+	            	if (in_array($ext, $supported_file)) {
+	            		echo "<li class=\"col-xs-6 col-sm-4 col-md-3\" data-src=\"".$image."\">";
+		            		echo "<a href=\"\"><img class=\"img-responsive\" src=\"".$image."\"></a>";
+	            		echo "</li>";      		
+	            		//echo $image ."<br />";
+	            	} else {
+	            		continue;
+	            	}
+	            
+	            }
+	            ?>                
             </ul>
         </div>
 
