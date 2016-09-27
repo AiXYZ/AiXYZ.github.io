@@ -4,7 +4,7 @@
   	<span class="icon-bar"></span>
   	<span class="icon-bar"></span> 
   </a>
-  <a class="brand" href="index.php" style="padding: 0px 0px 0px 20px;"><img src="img/sgc-logo-for-navbar.png"/> </a>
+  <a class="brand" href="index.php" style="padding: 0px 0px 0px 20px;"><img src="img/almadi-logo.png"/> </a>
   <div class="nav-collapse">
 	<ul class="nav pull-right">
 	  <!-- 
