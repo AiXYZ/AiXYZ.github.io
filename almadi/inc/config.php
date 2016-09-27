@@ -1,6 +1,6 @@
 <?php
 	//Local
-	define('DB_NAME', 'sgc');
+	define('DB_NAME', 'test-db');
 	define('DB_HOST', 'localhost');
 	define('DB_USER', 'root');
 	define('DB_PASS', '');
