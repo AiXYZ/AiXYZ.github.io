@@ -60,3 +60,44 @@ body {
 .cover-container {
   width: 100%; /* Must be percentage or pixels for horizontal alignment */
 }
+
+/*bot*/
+.bot-wrapper {
+	position: absolute;
+	transform: translate(-50%, -50%);
+}
+
+.botChat {
+    width: 600px;
+    height: 300px;
+    border: 1px solid #ffffff;
+    background: #000000;
+    opacity: 0.8;
+    text-align: left;
+}
+
+.bot {
+  display: inline;
+}
+
+.typed-cursor {
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@-webkit-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@-moz-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
