@@ -55,7 +55,8 @@ $(document).click(function(e){
 			"&gt; How can i help you? <br/>" +
 			"&gt;&nbsp;"
 		],
-		typeSpeed: 40
+		typeSpeed: 40,
+		contentType: 'html',
 	});
 
 });
