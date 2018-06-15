@@ -6,6 +6,11 @@
 
 var clickNuber = 0;
 $(document).click(function(e){
+	//prevent opening of terminal if user click inside it
+	if($(event.target).closest('.botTerminal').length) {
+		return false;
+	}
+	
 	clickNuber++;
 	
 	//top
@@ -38,15 +43,33 @@ $(document).click(function(e){
 		"left": left + 'px'
 	})
 	.append($(
-			'<div class="botChat lead">'+
-				clickNuber+' ClickThe modal plugin toggles your hidden content'+ 
-				'demand, via data attributes or JavaScript It also adds modal-open to the'+
-				'to override default scrolling behavior and generates <br/>'+
-				'<span class="bot"></span>'+
+			'<div class="botTerminal">'+
+				'<div class="terminalTitleBar">~ bot</div>'+			
+				'<div class="terminalBody">'+
+					'<span class="promptAt">bot@chat</span>'+
+					'<span class="promptColon">:</span>'+
+					'<span class="promptNegation">~</span>'+
+					'<span class="promptDollor">$</span>'+
+					'<span class="botType">bot typing</span>'+
+					'<div class="botReply">bot reply</div>'+
+					
+					'<span class="promptAt">bot@chat</span>'+
+					'<span class="promptColon">:</span>'+
+					'<span class="promptNegation">~</span>'+
+					'<span class="promptDollor">$</span>'+
+					'<span class="userType"><input type="text" placeholder="user typing Asking these questions Asking these questions"></span>'+
+					'<div class="userReply">user reply</div>'+
+					
+					'<div class="userSuggestions">'+
+						'<span class="suggestion1st">Asking these questions</span>'+
+						'<span class="suggestion2nd">will take the conversation</span>'+
+						'<span class="suggestion3rd">with another individual</span>'+					
+					'</div>'+
+				'</div>'+
 			'</div>'
 	))
 	.appendTo(document.body);
-	
+	/*
 	var typed = new Typed('.bot', {
 		strings: [
 			"&gt; Hi, <br/>" +
@@ -58,7 +81,7 @@ $(document).click(function(e){
 		typeSpeed: 40,
 		contentType: 'html',
 	});
-
+	*/
 });
 
 

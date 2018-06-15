@@ -67,6 +67,116 @@ body {
 	transform: translate(-50%, -50%);
 }
 
+.botTerminal{
+    font-family:Monaco,Consolas,lucida console,monospace;
+    display:block;
+    opacity: 0.8;
+    margin:auto;
+    border-radius:6px;
+    box-shadow:rgba(0,0,0,.3) 5px 5px 30px;
+    clear:both;
+    overflow:hidden;
+    -webkit-transition:all .5s ease-out;
+    -moz-transition:all .5s ease-out;
+    -ms-transition:all .5s ease-out;
+    -o-transition:all .5s ease-out;
+    transition:all .5s ease-out
+}
+
+.terminalTitleBar{
+    padding:5px 0;
+    font-size:.75em;
+    text-align:center;
+    text-shadow:rgba(255,255,255,.8) 0 1px 0;
+    background-color:#f8f8f8;
+    background-image:-webkit-linear-gradient(top,#e8e8e8,#bcbbbc);
+    background-image:-moz-linear-gradient(top,#e8e8e8,#bcbbbc);
+    background-image:linear-gradient(top,#e8e8e8,#bcbbbc);
+    box-shadow:inset rgba(255,255,255,.7) 0 1px 1px;
+    border-bottom:#6a6a6a 1px solid
+}
+
+.terminalBody{
+    padding:5px 10px;
+    height:274px;
+    width: 600px;
+    position: relative;
+    text-align: left;
+    overflow-y:auto;
+    word-break:normal;
+    background-color:#000;
+    color:#fff
+}
+
+.promptAt{
+	color: #ff00df;
+}
+
+.promptNegation{
+	color: #ae81ff;
+}
+
+.promptDollor{
+    padding-right: 5px;
+}
+
+.userType input{
+	width: 450px;
+	border: none;
+	background: transparent;
+	outline: none;
+}
+
+.botReply{
+	color: #a6e22e;
+}
+
+.userReply{
+	color: #66d9ef;
+}
+
+.userSuggestions{
+	white-space: nowrap;
+	position: absolute;
+	bottom: 5px;
+}
+
+.suggestion1st, .suggestion2nd, .suggestion3rd{
+    text-decoration: underline;
+    padding-right: 10px;
+    cursor: pointer;
+	color: #f4bf75;    
+}
+
+/*
+#ff00df
+.terminal .prompt{
+    color: #ff00df;
+}
+
+.terminalBody #botReply{
+    margin:5px 0
+}
+
+
+
+.typed-cursor{
+    opacity:1;
+    -webkit-animation:blink .7s infinite;
+    -moz-animation:blink .7s infinite;
+    animation:blink .7s infinite
+}
+.nodisplay{
+    display:none
+}
+
+*/
+
+
+
+
+
+/*
 .botChat {
     width: 600px;
     height: 300px;
@@ -101,3 +211,4 @@ body {
     50% { opacity: 0; }
     100% { opacity: 1; }
 }
+*/
