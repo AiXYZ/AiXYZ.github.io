@@ -4,12 +4,32 @@
  * Licensed under the MIT license
  */
 
+var replies = [
+    ["Hi, Thank you for clicking me.", "What can I do for you?"],
+    ["second"],
+    ["third"],
+    ["forth"]
+];
+var reply = replies[0];
+
 var clickNuber = 0;
 $(document).click(function(e){
-	//prevent opening of terminal if user click inside it
-	if($(event.target).closest('.botTerminal').length) {
+	//prevent opening of terminal if user click inside terminal
+	if($(event.target).closest('.botTerminal').length){
 		return false;
 	}
+	
+	//prevent opening of terminal if user click on facebook icon
+	if($(event.target).closest('.facebook').length){
+		window.open("https://www.facebook.com/EngAliAkhtar","_self")
+		return false;
+	}
+	
+	//prevent opening of terminal if user click on twitter icon
+	if($(event.target).closest('.twitter').length){
+		window.open("https://twitter.com/EngAliAkhtar","_self")
+		return false;
+	}	
 	
 	clickNuber++;
 	
@@ -44,14 +64,14 @@ $(document).click(function(e){
 	})
 	.append($(
 			'<div class="botTerminal">'+
-				'<div class="terminalTitleBar">~ bot</div>'+			
+				'<div class="terminalTitleBar">~ bot <span class="terminalClose"><i class="fa fa-times-circle"></i></span></div>'+			
 				'<div class="terminalBody">'+
 					'<span class="promptAt">bot@chat</span>'+
 					'<span class="promptColon">:</span>'+
 					'<span class="promptNegation">~</span>'+
 					'<span class="promptDollor">$</span>'+
-					'<span class="botType">bot typing</span>'+
-					'<div class="botReply">bot reply</div>'+
+					'<span class="botType"></span></br>'+
+					'<div class="botReply hideContent">'+replies[0][0]+'</div>'+
 					
 					'<span class="promptAt">bot@chat</span>'+
 					'<span class="promptColon">:</span>'+
@@ -69,19 +89,21 @@ $(document).click(function(e){
 			'</div>'
 	))
 	.appendTo(document.body);
-	/*
-	var typed = new Typed('.bot', {
-		strings: [
-			"&gt; Hi, <br/>" +
-			"&gt; My name is Ai. <br/>" +
-			"&gt; I'm Ali's Bot. <br/>" +
-			"&gt; How can i help you? <br/>" +
-			"&gt;&nbsp;"
-		],
+	
+	var typed = new Typed('.botType', {
+		strings: [replies[0][0]],
 		typeSpeed: 40,
 		contentType: 'html',
+		loop: false,
+		onComplete: function(){
+        	$(".terminalBody > .typed-cursor").hide();
+        	$(".botReply").removeClass('hideContent');
+		}		
 	});
-	*/
+	
+	$('.terminalClose').click(function(){
+		$('.bot-wrapper').remove();
+	});
 });
 
 
