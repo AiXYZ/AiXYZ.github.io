@@ -6,11 +6,13 @@
 
 var replies = [
     ["Hi, Thank you for clicking me.", "What can I do for you?"],
-    ["second"],
-    ["third"],
-    ["forth"]
+    ["Hello"],
+    ["A Bot, My name is Laila. I am Ali's assistant.", "You can ask me about Ali."],
+    ["His full name is Eng. Ali Akhtar Mohammed. I call him Ali.", "Here are some things you can ask:"],
+    ["I was launched in 2013, so technically I am pretty young.", "But I love facts, so I will tell you the number.", "I am 5 years, 3 months, 20 days old."],
+    ["Oops... Can you try again?"]
 ];
-var reply = replies[0];
+//console.log(replies[0].length);
 
 var clickNuber = 0;
 $(document).click(function(e){
@@ -66,19 +68,13 @@ $(document).click(function(e){
 			'<div class="botTerminal">'+
 				'<div class="terminalTitleBar">~ bot <span class="terminalClose"><i class="fa fa-times-circle"></i></span></div>'+			
 				'<div class="terminalBody">'+
+					'<span class="chatHisory"></span>'+
 					'<span class="promptAt">bot@chat</span>'+
 					'<span class="promptColon">:</span>'+
 					'<span class="promptNegation">~</span>'+
 					'<span class="promptDollor">$</span>'+
-					'<span class="botType"></span></br>'+
-					'<div class="botReply hideContent">'+replies[0][0]+'</div>'+
-					
-					'<span class="promptAt">bot@chat</span>'+
-					'<span class="promptColon">:</span>'+
-					'<span class="promptNegation">~</span>'+
-					'<span class="promptDollor">$</span>'+
-					'<span class="userType"><input type="text" placeholder="user typing Asking these questions Asking these questions"></span>'+
-					'<div class="userReply">user reply</div>'+
+					'<span class="botType"></span>'+
+					'<span class="userType hideContent"><input class="userTypeInput" type="text"></span>'+
 					
 					'<div class="userSuggestions">'+
 						'<span class="suggestion1st">Asking these questions</span>'+
@@ -90,20 +86,88 @@ $(document).click(function(e){
 	))
 	.appendTo(document.body);
 	
+	typingTyped(replies[0]);
+	
+	$(".terminalClose").click(function(){
+		$(".bot-wrapper").remove();
+	});
+	
+	$(".userTypeInput").keyup(function(key){
+		if(key.keyCode == 13){
+			var userQueryString = $(this).val();
+			userQuery(userQueryString);
+		}
+	});	
+});
+
+//typing
+var replyNumber = 0;
+function typingTyped(textStrings){
 	var typed = new Typed('.botType', {
-		strings: [replies[0][0]],
+		strings: [textStrings[replyNumber]],
 		typeSpeed: 40,
 		contentType: 'html',
 		loop: false,
 		onComplete: function(){
-        	$(".terminalBody > .typed-cursor").hide();
-        	$(".botReply").removeClass('hideContent');
-		}		
-	});
+        	$(".terminalBody > .typed-cursor").remove();
+        	$(".botType").empty();
+        	$(".chatHisory").append(
+				'<span class="promptAt">bot@chat</span>'+
+				'<span class="promptColon">:</span>'+
+				'<span class="promptNegation">~</span>'+
+				'<span class="promptDollor">$</span>'+
+				'<span class="botTyped">'+textStrings[replyNumber]+'</span></br>'+
+				'<div class="botReply">'+textStrings[replyNumber]+'</div>'      	
+        	);
+        	
+        	replyNumber++
+        	if(textStrings.length > replyNumber){
+        		typingTyped(textStrings);
+        	}
+        	
+    		if(textStrings.length == replyNumber){
+    			$(".userType").removeClass("hideContent");
+    			$(".userTypeInput").focus();
+    		}
+		}
+	});		
+}
+
+//user query
+function userQuery(userQueryString){
+	$(".chatHisory").append(
+		'<span class="promptAt">bot@chat</span>'+
+		'<span class="promptColon">:</span>'+
+		'<span class="promptNegation">~</span>'+
+		'<span class="promptDollor">$</span>'+
+		'<span class="userTyped">'+userQueryString+'</span></br>'+
+		'<div class="userReply">'+userQueryString+'</div>'      	
+	);
 	
-	$('.terminalClose').click(function(){
-		$('.bot-wrapper').remove();
-	});
-});
-
-
+	$(".userType").addClass("hideContent");
+	$(".userTypeInput").val('');
+	
+	var userQueryStringLc = userQueryString.toLowerCase();
+	switch(userQueryStringLc){
+		case "hi":
+			var repliesToUser = replies[1];
+			break;
+		case "hello":
+			var repliesToUser = replies[1];
+			break;
+		case "who are you?":
+			var repliesToUser = replies[2];
+			break;
+		case "tell me about ali.":
+			var repliesToUser = replies[3];
+			break;
+		case "how old are you?":
+			var repliesToUser = replies[4];
+			break;			
+		default:
+			var repliesToUser = replies[5];
+	}
+	
+	replyNumber = 0;
+	typingTyped(repliesToUser);
+}
