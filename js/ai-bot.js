@@ -14,7 +14,8 @@ var replies = [
 ];
 //console.log(replies[0].length);
 
-var clickNuber = 0;
+var replyNumber = 0;
+
 $(document).click(function(e){
 	//prevent opening of terminal if user click inside terminal
 	if($(event.target).closest('#botTerminal').length){
@@ -32,8 +33,6 @@ $(document).click(function(e){
 		window.open("https://twitter.com/EngAliAkhtar","_self")
 		return false;
 	}	
-	
-	clickNuber++;
 	
 	//top
 	var top = e.pageY;
@@ -55,8 +54,14 @@ $(document).click(function(e){
 		left = screenWidth;
 	}
 	
-	if(clickNuber > 1){
-		$('#botWrapper').remove();		
+	var isTerminalOpen = $('#botWrapper').length;
+	if(isTerminalOpen == 1){
+		$('#botWrapper')
+		.css({
+			"top": top + 'px',
+			"left": left + 'px'
+		});
+		return false;
 	}	
 	
 	$('<div id="botWrapper">')
@@ -92,6 +97,7 @@ $(document).click(function(e){
 	
 	$("#terminalClose").click(function(){
 		$("#botWrapper").remove();
+		replyNumber = 0;
 	});
 	
 	$("#userTypeInput").keyup(function(key){
@@ -99,12 +105,12 @@ $(document).click(function(e){
 			var userQueryString = $(this).val();
 			userQuery(userQueryString);
 		}
-	});	
+	});
 });
 
 //typing
-var replyNumber = 0;
 function typingTyped(textStrings){
+	console.log(replyNumber);
 	var typed = new Typed('#botType', {
 		strings: [textStrings[replyNumber]],
 		typeSpeed: 40,
