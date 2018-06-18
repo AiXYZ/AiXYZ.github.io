@@ -110,7 +110,6 @@ $(document).click(function(e){
 
 //typing
 function typingTyped(textStrings){
-	console.log(replyNumber);
 	var typed = new Typed('#botType', {
 		strings: [textStrings[replyNumber]],
 		typeSpeed: 40,
