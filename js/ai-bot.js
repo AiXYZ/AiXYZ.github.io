@@ -17,7 +17,7 @@ var replies = [
 var clickNuber = 0;
 $(document).click(function(e){
 	//prevent opening of terminal if user click inside terminal
-	if($(event.target).closest('.botTerminal').length){
+	if($(event.target).closest('#botTerminal').length){
 		return false;
 	}
 	
@@ -56,25 +56,27 @@ $(document).click(function(e){
 	}
 	
 	if(clickNuber > 1){
-		$('.bot-wrapper').remove();		
+		$('#botWrapper').remove();		
 	}	
 	
-	$('<div class="bot-wrapper">')
+	$('<div id="botWrapper">')
 	.css({
 		"top": top + 'px',
 		"left": left + 'px'
 	})
 	.append($(
-			'<div class="botTerminal">'+
-				'<div class="terminalTitleBar">~ bot <span class="terminalClose"><i class="fa fa-times-circle"></i></span></div>'+			
+			'<div id="botTerminal">'+
+				'<div class="terminalTitleBar">~ bot <span id="terminalClose"><i class="fa fa-times-circle"></i></span></div>'+			
 				'<div class="terminalBody">'+
-					'<span class="chatHisory"></span>'+
-					'<span class="promptAt">bot@chat</span>'+
-					'<span class="promptColon">:</span>'+
-					'<span class="promptNegation">~</span>'+
-					'<span class="promptDollor">$</span>'+
-					'<span class="botType"></span>'+
-					'<span class="userType hideContent"><input class="userTypeInput" type="text"></span>'+
+					'<div id="scrollableContent">'+
+						'<span id="chatHisory"></span>'+
+						'<span class="promptAt">bot@chat</span>'+
+						'<span class="promptColon">:</span>'+
+						'<span class="promptNegation">~</span>'+
+						'<span class="promptDollor">$</span>'+
+						'<span id="botType"></span>'+
+						'<span id="userType" class="hideContent"><input id="userTypeInput" type="text"></span>'+					
+					'</div>'+
 					
 					'<div class="userSuggestions">'+
 						'<span class="suggestion1st">Asking these questions</span>'+
@@ -88,11 +90,11 @@ $(document).click(function(e){
 	
 	typingTyped(replies[0]);
 	
-	$(".terminalClose").click(function(){
-		$(".bot-wrapper").remove();
+	$("#terminalClose").click(function(){
+		$("#botWrapper").remove();
 	});
 	
-	$(".userTypeInput").keyup(function(key){
+	$("#userTypeInput").keyup(function(key){
 		if(key.keyCode == 13){
 			var userQueryString = $(this).val();
 			userQuery(userQueryString);
@@ -103,15 +105,15 @@ $(document).click(function(e){
 //typing
 var replyNumber = 0;
 function typingTyped(textStrings){
-	var typed = new Typed('.botType', {
+	var typed = new Typed('#botType', {
 		strings: [textStrings[replyNumber]],
 		typeSpeed: 40,
 		contentType: 'html',
 		loop: false,
 		onComplete: function(){
-        	$(".terminalBody > .typed-cursor").remove();
-        	$(".botType").empty();
-        	$(".chatHisory").append(
+        	$(".terminalBody > #scrollableContent > .typed-cursor").remove();
+        	$("#botType").empty();
+        	$("#chatHisory").append(
 				'<span class="promptAt">bot@chat</span>'+
 				'<span class="promptColon">:</span>'+
 				'<span class="promptNegation">~</span>'+
@@ -120,14 +122,18 @@ function typingTyped(textStrings){
 				'<div class="botReply">'+textStrings[replyNumber]+'</div>'      	
         	);
         	
+        	var scrollableContentHeight = $("#scrollableContent")[0].scrollHeight;
+        	scrollableContentHeight = scrollableContentHeight + 10;
+        	$("#scrollableContent").scrollTop(scrollableContentHeight);
+        	
         	replyNumber++
         	if(textStrings.length > replyNumber){
         		typingTyped(textStrings);
         	}
         	
     		if(textStrings.length == replyNumber){
-    			$(".userType").removeClass("hideContent");
-    			$(".userTypeInput").focus();
+    			$("#userType").removeClass("hideContent");
+    			$("#userTypeInput").focus();
     		}
 		}
 	});		
@@ -135,7 +141,7 @@ function typingTyped(textStrings){
 
 //user query
 function userQuery(userQueryString){
-	$(".chatHisory").append(
+	$("#chatHisory").append(
 		'<span class="promptAt">bot@chat</span>'+
 		'<span class="promptColon">:</span>'+
 		'<span class="promptNegation">~</span>'+
@@ -143,9 +149,13 @@ function userQuery(userQueryString){
 		'<span class="userTyped">'+userQueryString+'</span></br>'+
 		'<div class="userReply">'+userQueryString+'</div>'      	
 	);
+
+	var scrollableContentHeight = $("#scrollableContent")[0].scrollHeight;
+	scrollableContentHeight = scrollableContentHeight + 10;
+	$("#scrollableContent").scrollTop(scrollableContentHeight);
 	
-	$(".userType").addClass("hideContent");
-	$(".userTypeInput").val('');
+	$("#userType").addClass("hideContent");
+	$("#userTypeInput").val('');
 	
 	var userQueryStringLc = userQueryString.toLowerCase();
 	switch(userQueryStringLc){

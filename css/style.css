@@ -62,12 +62,12 @@ body {
 }
 
 /*bot*/
-.bot-wrapper {
+#botWrapper {
 	position: absolute;
 	transform: translate(-50%, -50%);
 }
 
-.botTerminal{
+#botTerminal{
     font-family:Monaco,Consolas,lucida console,monospace;
     display:block;
     opacity: 0.8;
@@ -96,7 +96,7 @@ body {
     border-bottom:#6a6a6a 1px solid
 }
 
-.terminalClose{
+#terminalClose{
     float: right;
     margin-right: 6px;
     font-size: 16px;
@@ -112,7 +112,8 @@ body {
     overflow-y:auto;
     word-break:normal;
     background-color:#000;
-    color:#fff
+    color:#fff;
+    overflow: hidden;
 }
 
 .promptAt{
@@ -127,7 +128,7 @@ body {
     padding-right: 5px;
 }
 
-.userType input{
+#userType input{
 	width: 450px;
 	border: none;
 	background: transparent;
@@ -144,7 +145,7 @@ body {
 
 .userSuggestions{
 	white-space: nowrap;
-	position: absolute;
+	position: fixed;
 	bottom: 5px;
 }
 
@@ -157,6 +158,15 @@ body {
 
 .hideContent{
     display: none;    
+}
+
+#scrollableContent{
+	overflow-y: auto;
+	height: 240px;
+}
+
+#scrollableContent::-webkit-scrollbar {
+	display: none;
 }
 
 /*
