@@ -5,14 +5,37 @@
  */
 
 var replies = [
-    ["Hi, Thank you for clicking me.", "What can I do for you?"],
-    ["Hello"],
-    ["A Bot, My name is Laila. I am Ali's assistant.", "You can ask me about Ali."],
-    ["His full name is Eng. Ali Akhtar Mohammed. I call him Ali.", "Here are some things you can ask:"],
-    ["I was launched in 2013, so technically I am pretty young.", "But I love facts, so I will tell you the number.", "I am 5 years, 3 months, 20 days old."],
-    ["Oops... Can you try again?"]
+    [
+    	["--on click--"],
+    	["Hi, Thank you for clicking me.", "What can I do for you?"],
+    ],
+    [
+    	["(hi|hello|hey)(\\s|\\.|\\?|\\!|$)"],
+    	["Hello"],
+    ],
+    [
+    	["(who are you)(\\s|\\.|\\?|\\!|$)"],
+    	["A Bot, My name is Laila. I am Ali's assistant.", "You can ask me about Ali."],
+    ],
+    [
+    	["(tell me about ali)(\\s|\\.|\\?|\\!|$)"],
+    	["His full name is Eng. Ali Akhtar Mohammed. I call him Ali.", "Here are some things you can ask:"],
+    ],
+    [
+    	["(how old are you)(\\s|\\.|\\?|\\!|$)"],
+    	["I was launched in 2013, so technically I am pretty young.", "But I love facts, so I will tell you the number.", "I am 5 years, 3 months, 20 days old."],
+    ],
+    [
+    	["(what[^ ]* up)(\\s|\\.|\\?|\\!|$)"],
+    	["Nothin much.", "What can i help you wiht?"],
+    ],    
+    [
+    	["--none of these--"],
+    	["Oops... Can you try again?"]
+    ]
 ];
-//console.log(replies[0].length);
+
+//console.log(replies);
 
 var replyNumber = 0;
 
@@ -93,7 +116,7 @@ $(document).click(function(e){
 	))
 	.appendTo(document.body);
 	
-	typingTyped(replies[0]);
+	typingTyped(replies[0][1]);
 	
 	$("#terminalClose").click(function(){
 		$("#botWrapper").remove();
@@ -163,26 +186,18 @@ function userQuery(userQueryString){
 	$("#userTypeInput").val('');
 	
 	var userQueryStringLc = userQueryString.toLowerCase();
-	switch(userQueryStringLc){
-		case "hi":
-			var repliesToUser = replies[1];
-			break;
-		case "hello":
-			var repliesToUser = replies[1];
-			break;
-		case "who are you?":
-			var repliesToUser = replies[2];
-			break;
-		case "tell me about ali.":
-			var repliesToUser = replies[3];
-			break;
-		case "how old are you?":
-			var repliesToUser = replies[4];
-			break;			
-		default:
-			var repliesToUser = replies[5];
+	
+	for(i=0; i < replies.length; i++){
+		var repliesQueryString = replies[i][0];
+		if(userQueryStringLc.match(repliesQueryString)){
+			// There was a match.
+			var repliesToUser = replies[i][1];
+			replyNumber = 0;
+			typingTyped(repliesToUser);			
+		}else{
+			// No match.
+		}
 	}
 	
-	replyNumber = 0;
-	typingTyped(repliesToUser);
+
 }
