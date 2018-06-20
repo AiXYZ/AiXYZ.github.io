@@ -35,8 +35,6 @@ var replies = [
     ]
 ];
 
-//console.log(replies);
-
 var replyNumber = 0;
 
 $(document).click(function(e){
@@ -190,14 +188,25 @@ function userQuery(userQueryString){
 	for(i=0; i < replies.length; i++){
 		var repliesQueryString = replies[i][0];
 		if(userQueryStringLc.match(repliesQueryString)){
-			// There was a match.
 			var repliesToUser = replies[i][1];
 			replyNumber = 0;
-			typingTyped(repliesToUser);			
-		}else{
-			// No match.
+			typingTyped(repliesToUser);
+			break;
+		}else if("--none of these--" == repliesQueryString){
+			var noMatchReplies = [
+		    	["--none of these--"],
+		    	[userQueryStringLc + " what?"]
+		    ];	
+			
+			replyNumber = 0;
+			typingTyped(noMatchReplies[1]);
+			writeToQueryLog(userQueryStringLc);
+			break;
 		}
 	}
-	
+}
 
+//query log
+function writeToQueryLog(userQueryStringUnknown){
+	console.log(userQueryStringUnknown);
 }
