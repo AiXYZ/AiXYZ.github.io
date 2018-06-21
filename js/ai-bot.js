@@ -200,7 +200,7 @@ function userQuery(userQueryString){
 			
 			replyNumber = 0;
 			typingTyped(noMatchReplies[1]);
-			writeToQueryLog(userQueryStringLc);
+			writeToQueryLog(userQueryString);
 			break;
 		}
 	}
@@ -208,5 +208,9 @@ function userQuery(userQueryString){
 
 //query log
 function writeToQueryLog(userQueryStringUnknown){
-	console.log(userQueryStringUnknown);
+	//$.get("log/queryApi.php?query="+userQueryStringUnknown);
+	//http://alsayeghco.com/email/log/queryApi.php?query=test2
+	//http://alsayeghco.com/email/log/queryLog/queryLogFile.txt
+	
+	$.get("http://alsayeghco.com/email/log/queryApi.php?query="+userQueryStringUnknown);
 }
