@@ -208,9 +208,11 @@ function userQuery(userQueryString){
 
 //query log
 function writeToQueryLog(userQueryStringUnknown){
-	//$.get("log/queryApi.php?query="+userQueryStringUnknown);
 	//http://alsayeghco.com/email/log/queryApi.php?query=test2
 	//http://alsayeghco.com/email/log/queryLog/queryLogFile.txt
 	
-	$.get("http://alsayeghco.com/email/log/queryApi.php?query="+userQueryStringUnknown);
+	$.ajax({
+		url: "http://alsayeghco.com/email/log/queryApi.php?query="+userQueryStringUnknown,
+		dataType: "jsonp"
+	});
 }
