@@ -20,17 +20,27 @@
 
         // The A1 notation of a range to search for a logical table of data.
         // Values will be appended after the last row of the table.
-        range: 'my-range',  // TODO: Update placeholder value.
+        range: 'A1',  // TODO: Update placeholder value.
 
         // How the input data should be interpreted.
-        valueInputOption: '',  // TODO: Update placeholder value.
+        valueInputOption: 'USER_ENTEREDs',  // TODO: Update placeholder value.
 
         // How the input data should be inserted.
-        insertDataOption: '',  // TODO: Update placeholder value.
+        insertDataOption: 'INSERT_ROWS',  // TODO: Update placeholder value.
       };
 
       var valueRangeBody = {
         // TODO: Add desired properties to the request body.
+		//
+		"majorDimension": "ROWS",
+		"values": [
+			[
+				"A",
+				"B",
+				"C"
+			]
+		],  		
+		//---
       };
 
       var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
@@ -43,15 +53,15 @@
     }
 
     function initClient() {
-      var API_KEY = '';  // TODO: Update placeholder with desired API key.
+      var API_KEY = 'AIzaSyAAFrfswfGD_F1D4VtPZ12UwLt5v5exerE';  // TODO: Update placeholder with desired API key.
 
-      var CLIENT_ID = '';  // TODO: Update placeholder with desired client ID.
+      var CLIENT_ID = '865013095622-pgu23fb160ghvu7jhr7ecb2tthar0gdg.apps.googleusercontent.com';  // TODO: Update placeholder with desired client ID.
 
       // TODO: Authorize using one of the following scopes:
       //   'https://www.googleapis.com/auth/drive'
       //   'https://www.googleapis.com/auth/drive.file'
       //   'https://www.googleapis.com/auth/spreadsheets'
-      var SCOPE = '';
+      var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
       gapi.client.init({
         'apiKey': API_KEY,
