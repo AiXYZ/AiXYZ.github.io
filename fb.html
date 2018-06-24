@@ -4,43 +4,24 @@
   <title>FB</title>
   <script>
     $(document).ready(function() {
-        /*
-    	function GetFacebookFollowerCount(){
-    		  $json = file_get_contents('https://graph.facebook.com/v3.0/me/friends?access_token=EAACEdEose0cBAAY8M7JhCJFs1F1fwMqLRC7fr4wZCf06pyAYi7c2nW5i44CFjlBrROkQvuIfQXmZB1OEzwUFwFAUm577c7IFP95fMQ1YbW4Gscbg2ZB3qzgUZAWtvrC50gXv9dkFauVAEYUjxplpZCtPYnp1zoyc9vHeQhfAizDd9UWFZAvP2ZBO2VE2Uod06vsIL0E1URtDn98VZCNBbYQsyTXIA1RSnmwZD');
-    		  console.log($json+'Ali');
-    		  $obj = json_decode($json);
-    		  //$new_facebook_followers= $obj->data[0]->values[0]->value;
-    		  return $new_facebook_followers;
-		}
-		//console.log(GetFacebookFollowerCount());
-		GetFacebookFollowerCount();
-		
-
-
-    	function getval( callback ){
-    	    jQuery.getJSON('http://data.mtgox.com/api/1/BTCUSD/ticker', function(data) {
-    	        // We can't use .return because return is a JavaScript keyword.
-    	        callback(data['return'].avg.value);
-    	    });
-    	}
-
-    	$(function () {
-    	        $(document).ready(function() {
-    	        getval( function ( value ) { 
-    	            alert( 'Do something with ' + value + ' here!' );
-    	        } );
-    	    });
-
-    	});
-    	*/
 		
 		friendsCounts();
 		function friendsCounts(){
-			$.getJSON('https://graph.facebook.com/v3.0/me/friends?access_token=EAACEdEose0cBAAY8M7JhCJFs1F1fwMqLRC7fr4wZCf06pyAYi7c2nW5i44CFjlBrROkQvuIfQXmZB1OEzwUFwFAUm577c7IFP95fMQ1YbW4Gscbg2ZB3qzgUZAWtvrC50gXv9dkFauVAEYUjxplpZCtPYnp1zoyc9vHeQhfAizDd9UWFZAvP2ZBO2VE2Uod06vsIL0E1URtDn98VZCNBbYQsyTXIA1RSnmwZD', function (dataResponse) {
+			$.getJSON('https://graph.facebook.com/v3.0/me/friends?access_token=EAACW5Fg5N2IBAEP05Y6GzCxJLQxjxYPC4AaZCnA8fTmTOfwxawWcJ1ZBFsoWuVxI0I2HJTasBINqyg7PZASxYJiYb7mw34MjVf8PaucU9bROUkgZCshzgUe5VICPM7Lw4aWwVUEKhJdSfvB0gtiUwrSb4xrZA3ZBPDhXD1dii3sid8pFr82vJZA', function (dataResponse) {
 				var totalFriends = dataResponse['summary']['total_count'];
 				console.log(totalFriends);
+				//document.write(totalFriends);
 			});
 		}
+		
+		myFriendOnFb();
+		function myFriendOnFb(){
+			$.getJSON('https://graph.facebook.com/v3.0/me/friends?access_token=EAACW5Fg5N2IBAEP05Y6GzCxJLQxjxYPC4AaZCnA8fTmTOfwxawWcJ1ZBFsoWuVxI0I2HJTasBINqyg7PZASxYJiYb7mw34MjVf8PaucU9bROUkgZCshzgUe5VICPM7Lw4aWwVUEKhJdSfvB0gtiUwrSb4xrZA3ZBPDhXD1dii3sid8pFr82vJZA', function (dataResponse) {
+				//var totalFriends = dataResponse['summary']['total_count'];
+				console.log(dataResponse);
+				//document.write(totalFriends);
+			});
+		}		
 		
 
 		
