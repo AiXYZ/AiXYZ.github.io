@@ -14,16 +14,57 @@
 			});
 		}
 		
-		myFriendOnFb();
-		function myFriendOnFb(){
-			$.getJSON('https://graph.facebook.com/v3.0/me/friends?access_token=EAACW5Fg5N2IBAEP05Y6GzCxJLQxjxYPC4AaZCnA8fTmTOfwxawWcJ1ZBFsoWuVxI0I2HJTasBINqyg7PZASxYJiYb7mw34MjVf8PaucU9bROUkgZCshzgUe5VICPM7Lw4aWwVUEKhJdSfvB0gtiUwrSb4xrZA3ZBPDhXD1dii3sid8pFr82vJZA', function (dataResponse) {
-				//var totalFriends = dataResponse['summary']['total_count'];
+		/*
+		name
+		birthday
+		about
+		address
+		email
+		education
+		favorite_athletes
+		context
+		gender
+		favorite_teams
+		hometown
+		inspirational_people
+		interested_in
+		languages
+		location
+		political
+		profile_pic x
+		relationship_status
+		religion
+		sports
+		website
+		work		
+		*/
+		
+		myFriendOnFb('Cyril Raj');
+		function myFriendOnFb(userQueryNameString){
+			var userQueryNameStringLc = userQueryNameString.toLowerCase();
+			
+			$.getJSON('https://graph.facebook.com/v3.0/me?fields=friends.limit(1000)%7Bname%2Cbirthday%2Chometown%2Creligion%7D&access_token=EAACW5Fg5N2IBAEP05Y6GzCxJLQxjxYPC4AaZCnA8fTmTOfwxawWcJ1ZBFsoWuVxI0I2HJTasBINqyg7PZASxYJiYb7mw34MjVf8PaucU9bROUkgZCshzgUe5VICPM7Lw4aWwVUEKhJdSfvB0gtiUwrSb4xrZA3ZBPDhXD1dii3sid8pFr82vJZA', function (dataResponse) {
 				console.log(dataResponse);
-				//document.write(totalFriends);
+				
+				for(i=0; i < 100; i++){
+					var name = dataResponse['friends']['data'][i]['name'];
+					var nameLc = name.toLowerCase();
+					
+					if(userQueryNameStringLc == nameLc){
+						var repliesUserBirthday = dataResponse['friends']['data'][i]['birthday'];
+						console.log(repliesUserBirthday);
+						console.log("Ali");
+						break;
+					}
+					
+				}				
+				
+				
+				
 			});
 		}		
 		
-
+		
 		
     });
   </script>
