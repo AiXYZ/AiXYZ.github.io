@@ -64,4 +64,4 @@ var onMapClickHandler = function(event) {
 $('.map').on('click', onMapClickHandler);
 
 // Video slow
-document.getElementById("videoBackground").playbackRate = .4;
+document.getElementById("videoBackground").playbackRate = .3;
