@@ -385,8 +385,6 @@ a:hover, a:focus, a:active {
     z-index: -100;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: url("../img/bg-masthead.jpg") no-repeat;
-    background-size: cover;
 }
 
 header .overlay {
@@ -395,7 +393,7 @@ header .overlay {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: black;
+  background-color: #3987c9;
   opacity: 0.5;
   z-index: -90;
 }
