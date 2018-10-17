@@ -374,7 +374,7 @@ a:hover, a:focus, a:active {
   color: #ecb807 !important;
 }
 
-#background {
+#videoBackground {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -385,7 +385,7 @@ a:hover, a:focus, a:active {
     z-index: -100;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: url("../img/moon_000.jpg") no-repeat;
+    background: url("../img/half-moon-bay-beach-dammam-poster.jpg") no-repeat;
     background-size: cover;
 }
 
