@@ -73,7 +73,7 @@ $.getJSON('https://graph.facebook.com/v3.1/me?fields=albums%7Bphotos.limit(99)%7
 	$('#fbPhotos').empty();
 	for(fbi=0;fbi<fbPhoto.length;fbi++){
 		$('#fbPhotos').append(
-          '<div class="col-lg-6">'+
+          '<div class="card">'+
             '<a class="portfolio-item" href="#">'+
               '<span class="caption">'+
                 '<span class="caption-content">'+
@@ -92,7 +92,7 @@ $.getJSON('https://graph.facebook.com/v3.1/me?fields=albums%7Bphotos.limit(99)%7
 			var fbPhotoNext = dataResponseNext['data'];
 			for(fbiNext=0;fbiNext<fbPhotoNext.length;fbiNext++){
 				$('#fbPhotos').append(
-		          '<div class="col-lg-6">'+
+		          '<div class="card">'+
 		            '<a class="portfolio-item" href="#">'+
 		              '<span class="caption">'+
 		                '<span class="caption-content">'+
