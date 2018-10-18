@@ -65,3 +65,47 @@ $('.map').on('click', onMapClickHandler);
 
 // Video slow
 document.getElementById("videoBackground").playbackRate = .3;
+
+// Facebook post
+$.getJSON('https://graph.facebook.com/v3.1/me?fields=albums%7Bphotos.limit(99)%7Bimages%2Cname%7D%7D&access_token=EAAGu6eQI99ABAPHn3ZCqCiZAPu4GcZAq81ZCR9c8Aya0zSCI2KXxhkNYw0RVgpRbL8YdWE2D3QeTw8OCELuISQnDdEZBN1emfDJlECWpkIIICWOLtOXlzsHrf3QdEon4tcQG07Ht7kfs6YXXgFXZBxRIdVunCV9wRBAVzuksh6HQZDZD', function (dataResponse) {
+	var fbPhoto = dataResponse['albums']['data'][0]['photos']['data'];
+	var nextPhoto = '';
+	$('#fbPhotos').empty();
+	for(fbi=0;fbi<fbPhoto.length;fbi++){
+		$('#fbPhotos').append(
+          '<div class="col-lg-6">'+
+            '<a class="portfolio-item" href="#">'+
+              '<span class="caption">'+
+                '<span class="caption-content">'+
+                  '<p class="mb-0">'+fbPhoto[fbi]['name']+'</p>'+
+                '</span>'+
+              '</span>'+
+              '<img class="img-fluid" src="'+fbPhoto[fbi]['images'][0]['source']+'" alt="">'+
+            '</a>'+
+          '</div>'			
+		);
+	}
+	
+	nextPhoto = dataResponse['albums']['data'][0]['photos']['paging']['next'];
+	$('#fbPHotosNext').click(function(){
+		$.getJSON(nextPhoto, function (dataResponseNext) {
+			var fbPhotoNext = dataResponseNext['data'];
+			for(fbiNext=0;fbiNext<fbPhotoNext.length;fbiNext++){
+				$('#fbPhotos').append(
+		          '<div class="col-lg-6">'+
+		            '<a class="portfolio-item" href="#">'+
+		              '<span class="caption">'+
+		                '<span class="caption-content">'+
+		                  '<p class="mb-0">'+fbPhotoNext[fbiNext]['name']+'</p>'+
+		                '</span>'+
+		              '</span>'+
+		              '<img class="img-fluid" src="'+fbPhotoNext[fbiNext]['images'][0]['source']+'" alt="">'+
+		            '</a>'+
+		          '</div>'					
+				);
+			}		
+			
+			nextPhoto = dataResponseNext['paging']['next'];
+		});	
+	});
+});
