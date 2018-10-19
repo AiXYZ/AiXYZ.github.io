@@ -67,7 +67,7 @@ $('.map').on('click', onMapClickHandler);
 document.getElementById("videoBackground").playbackRate = .3;
 
 // Facebook post
-$.getJSON('https://graph.facebook.com/v3.1/me?fields=albums%7Bphotos.limit(99)%7Bimages%2Cname%7D%7D&access_token=EAAGu6eQI99ABAPHn3ZCqCiZAPu4GcZAq81ZCR9c8Aya0zSCI2KXxhkNYw0RVgpRbL8YdWE2D3QeTw8OCELuISQnDdEZBN1emfDJlECWpkIIICWOLtOXlzsHrf3QdEon4tcQG07Ht7kfs6YXXgFXZBxRIdVunCV9wRBAVzuksh6HQZDZD', function (dataResponse) {
+$.getJSON('https://graph.facebook.com/v3.1/me?fields=albums%7Bphotos.limit(9)%7Bimages%2Cname%7D%7D&access_token=EAAGu6eQI99ABAPHn3ZCqCiZAPu4GcZAq81ZCR9c8Aya0zSCI2KXxhkNYw0RVgpRbL8YdWE2D3QeTw8OCELuISQnDdEZBN1emfDJlECWpkIIICWOLtOXlzsHrf3QdEon4tcQG07Ht7kfs6YXXgFXZBxRIdVunCV9wRBAVzuksh6HQZDZD', function (dataResponse) {
 	var fbPhoto = dataResponse['albums']['data'][0]['photos']['data'];
 	var nextPhoto = '';
 	$('#fbPhotos').empty();
@@ -87,7 +87,7 @@ $.getJSON('https://graph.facebook.com/v3.1/me?fields=albums%7Bphotos.limit(99)%7
 	}
 	
 	nextPhoto = dataResponse['albums']['data'][0]['photos']['paging']['next'];
-	$('#fbPHotosNext').click(function(){
+	$('#fbPhotosNext').click(function(){
 		$.getJSON(nextPhoto, function (dataResponseNext) {
 			var fbPhotoNext = dataResponseNext['data'];
 			for(fbiNext=0;fbiNext<fbPhotoNext.length;fbiNext++){

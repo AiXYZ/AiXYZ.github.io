@@ -402,3 +402,16 @@ header .overlay {
 .engravedText {
   text-shadow: 0px 1px 0px rgba(255,255,255,.5);
 }
+
+.no-gutter-card.card-columns {
+  column-gap: 0;
+  line-height: 0;
+}
+
+.no-gutter-card > .card {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  line-height: 1.5;
+  -webkit-appearance: none;
+}
