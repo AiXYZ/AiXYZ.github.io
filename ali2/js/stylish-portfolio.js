@@ -71,6 +71,21 @@ videoLoad.oncanplay = function() {
     $("#videoLoader").addClass("hideLoaderSpin");
 };
 
+//profile image
+var profileImage = document.getElementById("profileImage");
+new BreathingHalftone( profileImage, {
+	dotSize: 1/200,
+	dotSizeThreshold: 0.01,
+	initVelocity: 0.7,
+	oscPeriod: 2,
+	channels: [ 'lum' ],
+	friction: 0.25,
+	hoverDiameter: 0.6,
+	hoverForce: 0.006,
+	activeDiameter: -0.4,
+	activeForce: 0.004
+});
+
 // Facebook post
 $.getJSON('https://graph.facebook.com/v3.1/me?fields=albums%7Bphotos.limit(9)%7Bimages%2Cname%7D%7D&access_token=EAAGu6eQI99ABAPHn3ZCqCiZAPu4GcZAq81ZCR9c8Aya0zSCI2KXxhkNYw0RVgpRbL8YdWE2D3QeTw8OCELuISQnDdEZBN1emfDJlECWpkIIICWOLtOXlzsHrf3QdEon4tcQG07Ht7kfs6YXXgFXZBxRIdVunCV9wRBAVzuksh6HQZDZD', function (dataResponse) {
 	var fbPhoto = dataResponse['albums']['data'][0]['photos']['data'];
