@@ -86,6 +86,22 @@ new BreathingHalftone( profileImage, {
 	activeForce: 0.004
 });
 
+//project list
+var display_count = 0;
+$('.projectList').hide();
+
+$('#nextProject').click(function(event){
+	var start = display_count;
+	var end = display_count+2;
+	for(var i=start; i<end ;i++){
+		$('.projectList').eq(i).show();
+	}  
+  
+	display_count +=2;
+})
+
+$('#nextProject').click(); // trigger the first time
+
 // Facebook post
 $.getJSON('https://graph.facebook.com/v3.1/me?fields=albums%7Bphotos.limit(9)%7Bimages%2Cname%7D%7D&access_token=EAAGu6eQI99ABAPHn3ZCqCiZAPu4GcZAq81ZCR9c8Aya0zSCI2KXxhkNYw0RVgpRbL8YdWE2D3QeTw8OCELuISQnDdEZBN1emfDJlECWpkIIICWOLtOXlzsHrf3QdEon4tcQG07Ht7kfs6YXXgFXZBxRIdVunCV9wRBAVzuksh6HQZDZD', function (dataResponse) {
 	var fbPhoto = dataResponse['albums']['data'][0]['photos']['data'];
