@@ -129,7 +129,7 @@ $.getJSON('https://graph.facebook.com/v3.1/me?fields=albums%7Bphotos.limit(9)%7B
 			for(fbiNext=0;fbiNext<fbPhotoNext.length;fbiNext++){
 				$('#fbPhotos').append(
 		          '<div class="card">'+
-		            '<a class="portfolio-item" href="https://www.facebook.com/photo.php?fbid='+fbPhoto[fbi]['id']+'">'+
+		            '<a class="portfolio-item" href="https://www.facebook.com/photo.php?fbid='+fbPhoto[fbiNext]['id']+'">'+
 		              '<span class="caption">'+
 		                '<span class="caption-content">'+
 		                  '<p class="mb-0">'+fbPhotoNext[fbiNext]['name']+'</p>'+
