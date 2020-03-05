@@ -6,7 +6,7 @@ function pageLoaded() {
 		    '<div class="gallery">'+
 				'<a href="img/gallery/ref/'+i+'.jpg" target="_blank">'+
 					'<img src="img/gallery/ref/'+i+'.jpg">'+
-					'<div class="view">View '+i+'</div>'+
+					'<div class="view">View</div>'+
 				'</a>'+
 			'</div>'
 		);
