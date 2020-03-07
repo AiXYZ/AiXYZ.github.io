@@ -11,6 +11,7 @@ body, html {
 .bg-image {
 	background-image: url("../img/bg-image-pink-shirt.jpg");
 	height: calc(100% - 100px);
+	min-height: 350px;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
