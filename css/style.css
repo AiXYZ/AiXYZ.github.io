@@ -76,7 +76,6 @@ body, html {
 }
 
 /*gallery*/
-
 .gallery-label {
 	margin-top: 15px;
 	margin-left: 15px;
@@ -84,7 +83,6 @@ body, html {
 }
 
 .gallery-container {
-	margin-top: 15px !important;
 	margin-left: unset !important;
 	columns: 6 200px;
 	column-gap: 30px;
