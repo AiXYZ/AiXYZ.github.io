@@ -11,7 +11,7 @@ body, html {
 .bg-image {
 	background-image: url("../img/bg-image-pink-shirt.jpg");
 	height: calc(100% - 100px);
-	min-height: 350px;
+	min-height: 330px;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -38,7 +38,7 @@ body, html {
 }
 
 .info {
-	width: calc(100% - 250px);
+	width: calc(100% - 230px);
 	display: inline-block;
 }
 
