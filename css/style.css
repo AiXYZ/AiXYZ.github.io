@@ -80,34 +80,40 @@ body, html {
 .gallery-label {
 	margin-top: 15px;
 	margin-left: 15px;
-    margin-bottom: unset;	
+	margin-bottom: unset;
 }
 
-.gallery a {
-    text-decoration: none;
-    color: #000;
+.gallery-container {
+	margin-top: 15px !important;
+	margin-left: unset !important;
+	columns: 6 200px;
+	column-gap: 30px;
+	width: calc(100% - 40px);
+	margin: 0 auto;
 }
 
-.gallery {
-	margin-top: 15px;
-	margin-left: 15px;
-	float: left;
-	width: 200px;
-    padding: 4px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.gallery:hover {
-	border: 1px solid #6c757d;
-}
-
-.gallery img {
+.image-link {
+	margin: 15px 15px 0;
+	display: inline-block;
 	width: 100%;
-	height: auto;
+	border: 1px solid #ddd;
+	padding: 4px;
+	border-radius: 4px;
+	text-decoration: none;
+	color: #000;
 }
 
-.view {
+.image-link:hover {
+	border: 1px solid #000;
+}
+
+.image-src {
+	width: 100%;
+	border-radius: 4px;
+}
+
+.image-view {
+	margin: 4px 0;
+	padding: 0;
 	text-align: center;
 }
