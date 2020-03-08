@@ -1,6 +1,6 @@
 //Load gallery after page has been loaded (background and profile image)
 function pageLoaded() {
-	for (var i = 1; i < 19; i++) {
+	for (var i = 1; i < 18; i++) {
 		var galleryContainer = document.getElementById("galleryContainer");
 
 		// <a> Tag
