@@ -10,7 +10,7 @@ body, html {
 }
 
 .bg-image {
-	background-image: url("../img/background_photo/pink-shirt_1.jpg");
+	background-image: url("../img/background_photo/4-9-2020.jpg");
 	height: calc(100% - 100px);
 	min-height: 330px;
 	background-position: center;
