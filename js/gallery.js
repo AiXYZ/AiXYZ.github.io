@@ -2,7 +2,6 @@
 function pageLoaded() {
 
 	var imageArray = ([
-	    ["38_thumb.JPG", "38.JPG"],
 	    ["37_thumb.JPG", "37.JPG"],
 	    ["36_thumb.jpg", "36.jpg"],
 	    ["35_thumb.JPG", "35.JPG"],
@@ -15,15 +14,11 @@ function pageLoaded() {
 	    ["28_thumb.jpg", "28.JPG"],
 	    ["27_thumb.jpg", "27.jpg"],
 	    ["26_thumb.jpg", "26.jpg"],
-	    ["25_thumb.jpg", "25.jpg"],
-	    ["24_thumb.jpg", "24.jpg"],
-	    ["23_thumb.jpg", "23.jpg"],
 	    ["22_thumb.jpg", "22.jpg"],
 	    ["21_thumb.JPG", "21.JPG"],
 	    ["20_thumb.jpg", "20.jpg"],
 	    ["19_thumb.jpg", "19.jpg"],
 	    ["18_thumb.JPG", "18.JPG"],
-	    ["17_thumb.JPG", "17.JPG"],
 	    ["16_thumb.JPG", "16.JPG"],
 	    ["15_thumb.JPG", "15.JPG"],
 	    ["14_thumb.jpg", "14.jpg"],
